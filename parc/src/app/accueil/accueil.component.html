@@ -8,13 +8,24 @@
         <span>Nom de l'attraction</span>
         <span>Description de l'attraction</span>
         <span>Difficulté de l'attraction / 5</span>
+        <span *ngIf="authService.isLoggedIn">Visible</span>
       </div>
     </div>
     <ng-container *ngFor="let attraction of attractions | async;">
-      <div class="attraction">
+      <div class="attraction" *ngIf="attraction.visible || authService.isLoggedIn">
         <span>{{attraction.nom}}</span>
         <span>{{attraction.description}}</span>
         <span>{{attraction.difficulte}} / 5</span>
+        <input type="checkbox" *ngIf="authService.isLoggedIn"  [checked]="attraction.visible" disabled>
+        <button mat-button (click)="addCritique(1)" >Ajouter critique</button>
+        <ng-container *ngFor="let critique of critiques | async;">
+          <div class="attraction" *ngIf="critique.attraction_id == attraction.attraction_id">
+            <span>{{critique.critique}}</span>
+            <span>{{critique.note}} / 20</span> 
+            <span *ngIf="!critique.anonyme">{{critique.nom}}</span>
+            <span *ngIf="!critique.anonyme">{{critique.prenom}}</span>
+          </div>
+        </ng-container>
       </div>
     </ng-container>
   </mat-card-content>

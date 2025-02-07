@@ -16,16 +16,10 @@
         <span>{{attraction.nom}}</span>
         <span>{{attraction.description}}</span>
         <span>{{attraction.difficulte}} / 5</span>
-        <input type="checkbox" *ngIf="authService.isLoggedIn"  [checked]="attraction.visible" disabled>
-        <button mat-button (click)="addCritique(1)" >Ajouter critique</button>
-        <ng-container *ngFor="let critique of critiques | async;">
-          <div class="attraction" *ngIf="critique.attraction_id == attraction.attraction_id">
-            <span>{{critique.critique}}</span>
-            <span>{{critique.note}} / 20</span> 
-            <span *ngIf="!critique.anonyme">{{critique.nom}}</span>
-            <span *ngIf="!critique.anonyme">{{critique.prenom}}</span>
-          </div>
-        </ng-container>
+        <span *ngIf="authService.isLoggedIn">{{attraction.visible ? "Oui" : "Non"}}</span>
+        <div class="critique-section"> 
+          <app-critique [attractionId]="attraction.attraction_id"></app-critique>
+        </div>
       </div>
     </ng-container>
   </mat-card-content>

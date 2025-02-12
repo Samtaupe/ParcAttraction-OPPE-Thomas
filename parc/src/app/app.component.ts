@@ -4,7 +4,7 @@ import { AuthService } from './Service/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
-
+ 
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -24,12 +24,11 @@ export class AppComponent {
     this.router.navigate(["/login"]);
   }
 
-  login(){
+  login() {
     this.router.navigate(["/login"]);
   }
 
-  admin(){
+  admin() {
     this.router.navigate(["/admin"]);
   }
-
 }

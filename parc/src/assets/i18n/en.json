@@ -1,0 +1,9 @@
+{
+  "APP": {
+    "TITLE": "Amusement Park",
+    "ADMIN": "Administration",
+    "LOGOUT": "Logout",
+    "LOGIN": "Login",
+    "LANGUAGE": "Language"
+  }
+}

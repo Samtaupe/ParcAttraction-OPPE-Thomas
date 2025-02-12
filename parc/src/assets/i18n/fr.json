@@ -1,0 +1,9 @@
+{
+  "APP": {
+    "TITLE": "Parc d'attraction",
+    "ADMIN": "Administration",
+    "LOGOUT": "Déconnexion",
+    "LOGIN": "Connexion",
+    "LANGUAGE": "Langue"
+  }
+}

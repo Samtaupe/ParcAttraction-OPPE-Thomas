@@ -13,6 +13,7 @@ import { AuthService } from '../Service/auth.service';
 import { CritiqueInterface } from '../Interface/critique.interface';
 import { MAT_DIALOG_DATA, MatDialogActions } from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-critique-form',
   templateUrl: './critique.form.component.html',
@@ -30,7 +31,7 @@ export class CritiqueFormComponent implements OnInit {
     private critiqueService: CritiqueService,
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
-    public authService: AuthService
+    public authService: AuthService,
   ) {
     this.critiqueForm = this.formBuilder.group({
       critique: ['', [Validators.required]],
@@ -58,10 +59,10 @@ export class CritiqueFormComponent implements OnInit {
     const critiqueData = { ...this.critiqueForm.value, attraction_id: this.data.attraction_id};
     this.critiqueService.postCritique(critiqueData).subscribe(result => {
       this.critiqueForm.patchValue({critique_id: result.result});
+      location.reload();
       this._snackBar.open(result.message, undefined, {
         duration: 1000
       });
-      this.loadCritiques()
     });
   }
 }

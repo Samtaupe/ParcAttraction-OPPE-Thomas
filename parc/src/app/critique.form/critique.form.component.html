@@ -23,6 +23,6 @@
         <mat-label>Prénom</mat-label>
         <input matInput formControlName="prenom" [attr.disabled]="critiqueForm.get('anonyme')?.value ? '' : null">
       </mat-form-field>
-      <button class="btn-critique" mat-button class="full-width" type="submit" [disabled]="critiqueForm.invalid">Enregistrer</button>
+      <button class="btn-critique full-width" mat-button type="submit" [disabled]="critiqueForm.invalid">Enregistrer</button>
   </form>
 </div>

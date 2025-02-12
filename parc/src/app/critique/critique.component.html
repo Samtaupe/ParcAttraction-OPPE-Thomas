@@ -1,12 +1,11 @@
 <h3>Liste des critiques</h3>
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Critique Column -->
+
   <ng-container matColumnDef="critique">
     <mat-header-cell *matHeaderCellDef> Critique </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.critique}} </mat-cell>
   </ng-container>
 
-  <!-- Note Column -->
   <ng-container matColumnDef="note">
     <mat-header-cell *matHeaderCellDef> Note (/20) </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.note}} </mat-cell>

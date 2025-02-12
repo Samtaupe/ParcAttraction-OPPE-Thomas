@@ -9,18 +9,25 @@
         <span>Description de l'attraction</span>
         <span>Difficulté de l'attraction / 5</span>
         <span *ngIf="authService.isLoggedIn">Visible</span>
+        <span> Ajout de critique</span>
       </div>
     </div>
     <ng-container *ngFor="let attraction of attractions | async;">
       <div class="attraction" *ngIf="attraction.visible || authService.isLoggedIn">
-        <span>{{attraction.nom}}</span>
-        <span>{{attraction.description}}</span>
-        <span>{{attraction.difficulte}} / 5</span>
-        <span *ngIf="authService.isLoggedIn">{{attraction.visible ? "Oui" : "Non"}}</span>
-        <div class="critique-section"> 
-          <app-critique [attractionId]="attraction.attraction_id"></app-critique>
+          <span>{{attraction.nom}}</span>
+          <span>{{attraction.description}}</span>
+          <span>{{attraction.difficulte}} / 5</span>
+          <span *ngIf="authService.isLoggedIn">{{attraction.visible ? "Oui" : "Non"}}</span>
+          <button mat-raised-button (click)="openDialog(attraction.attraction_id)">Ajouter une critique</button>
         </div>
-      </div>
+        <mat-accordion class="critique">
+          <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Critiques </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-critique [attractionId]="attraction.attraction_id"></app-critique>
+          </mat-expansion-panel>
+        </mat-accordion> 
     </ng-container>
   </mat-card-content>
 </mat-card>

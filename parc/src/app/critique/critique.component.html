@@ -1,39 +1,35 @@
-<div class="critique-container">
-  <h3>Ajouter une critique</h3>
-  <form [formGroup]="critiqueForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Description</mat-label>
-      <input matInput formControlName="critique" type="text" required>
-    </mat-form-field>
-    
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Note (/20)</mat-label>
-      <input matInput formControlName="note" type="number" min="0" max="20" required>
-    </mat-form-field>
-    
-    <mat-slide-toggle formControlName="anonyme">Critique anonyme</mat-slide-toggle>
-    
-    <div *ngIf="!critiqueForm.get('anonyme')?.value">
-      <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Nom</mat-label>
-        <input matInput formControlName="nom">
-      </mat-form-field>
-      
-      <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Prénom</mat-label>
-        <input matInput formControlName="prenom">
-      </mat-form-field>
-    </div>
-    
-    <button mat-button type="submit" [disabled]="critiqueForm.invalid">Enregistrer</button>
-  </form>
+<h3>Liste des critiques</h3>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Critique Column -->
+  <ng-container matColumnDef="critique">
+    <mat-header-cell *matHeaderCellDef> Critique </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.critique}} </mat-cell>
+  </ng-container>
+
+  <!-- Note Column -->
+  <ng-container matColumnDef="note">
+    <mat-header-cell *matHeaderCellDef> Note (/20) </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.note}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="nom">
+    <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngIf="!element.anonyme; else anonymeBlock">{{ element.nom }}</span>
+      <ng-template #anonymeBlock> Anonyme </ng-template>
+    </mat-cell>
+  </ng-container>
   
-  <h3>Critiques</h3>
-  <ng-container *ngFor="let critique of critiques$ | async">
-    <div class="critique-item" *ngIf="critique.attraction_id == attractionId">
-      <p>{{ critique.critique }}</p>
-      <p>Note: {{ critique.note }}/20</p>
-      <p *ngIf="!critique.anonyme">{{ critique.nom }} {{ critique.prenom }}</p>
-    </div>
-  </ng-container>  
-</div>
+  <ng-container matColumnDef="prenom">
+    <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <span *ngIf="!element.anonyme; else anonymePrenomBlock">{{ element.prenom }}</span>
+      <ng-template #anonymePrenomBlock> Anonyme </ng-template>
+    </mat-cell>
+  </ng-container>
+  
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+

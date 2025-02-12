@@ -2,35 +2,23 @@
   font-size: 18px;
   font-weight: 500;
   background-color: darkgrey;
-  width: fit-content;
+  width: 100%;
   margin-top: 25px;
+  text-align: center;
+  align-items: center;
 }
 .attraction {
   display: flex;
-  align-items: center;
+  text-align: center;
   column-gap: 25px;
-  width: fit-content;
-
-  border-bottom: solid 1px grey;
+  width: 100%;
   span {
     padding: 5px;
     width: 250px;
   }
-}
-.champ {
-  padding: 5px;
-  margin-top: 21.5px;
-  width: 250px;
-}
-
-.attraction {
   margin-bottom: 20px;
   padding: 10px;
-  border-bottom: 1px solid grey;
 }
-
-.critique-section {
-  margin-top: 15px;
-  padding-left: 20px;
-  border-left: 3px solid #ccc;
+.attraction_critique{
+  border-bottom: 1px black solid;
 }

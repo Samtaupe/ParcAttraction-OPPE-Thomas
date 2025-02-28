@@ -1,15 +1,15 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Bienvenue sur le site internet du parc d'attraction</mat-card-title>
+    <mat-card-title i18n>Bienvenue sur le site internet du parc d'attraction</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <div class="attraction-title">
       <div class="attraction">
-        <span>Nom de l'attraction</span>
-        <span>Description de l'attraction</span>
-        <span>Difficulté de l'attraction / 5</span>
-        <span *ngIf="authService.isLoggedIn">Visible</span>
-        <span> Ajout de critique</span>
+        <span i18n>Nom de l'attraction</span>
+        <span i18n>Description de l'attraction</span>
+        <span i18n>Difficulté de l'attraction / 5</span>
+        <span i18n *ngIf="authService.isLoggedIn">Visible</span>
+        <span i18n> Ajout de critique</span>
       </div>
     </div>
     <ng-container *ngFor="let attraction of attractions | async;">
@@ -17,13 +17,13 @@
           <span>{{attraction.nom}}</span>
           <span>{{attraction.description}}</span>
           <span>{{attraction.difficulte}} / 5</span>
-          <span *ngIf="authService.isLoggedIn">{{attraction.visible ? "Oui" : "Non"}}</span>
-          <button mat-raised-button (click)="openDialog(attraction.attraction_id)">Ajouter une critique</button>
+          <span i18n *ngIf="authService.isLoggedIn">{{attraction.visible ? "Oui" : "Non"}}</span>
+          <button i18n mat-raised-button (click)="openDialog(attraction.attraction_id)">Ajouter une critique</button>
         </div>
         <mat-accordion class="critique">
           <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
             <mat-expansion-panel-header>
-              <mat-panel-title> Critiques </mat-panel-title>
+              <mat-panel-title i18n> Critiques </mat-panel-title>
             </mat-expansion-panel-header>
             <app-critique [attractionId]="attraction.attraction_id"></app-critique>
           </mat-expansion-panel>

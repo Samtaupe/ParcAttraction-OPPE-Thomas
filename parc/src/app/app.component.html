@@ -1,11 +1,11 @@
 <mat-toolbar>
-  <span><a routerLink="/accueil">Parc d'attraction</a></span>
+  <span i18n><a routerLink="/accueil">Parc d'attraction</a></span>
   <div *ngIf="authService.isLoggedIn">
-    <button mat-stroked-button (click)="admin()">Administration</button>
-    <button mat-stroked-button (click)="logout()">Déconnexion</button>
+    <button i18n mat-stroked-button (click)="admin()">Administration</button>
+    <button i18n mat-stroked-button (click)="logout()">Déconnexion</button>
   </div>
   <div *ngIf="!authService.isLoggedIn">
-    <button mat-stroked-button (click)="login()">Connexion</button>
+    <button i18n mat-stroked-button (click)="login()">Connexion</button>
   </div>
 </mat-toolbar>
 

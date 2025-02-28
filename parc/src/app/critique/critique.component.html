@@ -1,8 +1,8 @@
-<h3>Liste des critiques</h3>
+<h3 i18n>Liste des critiques</h3>
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="critique">
-    <mat-header-cell *matHeaderCellDef> Critique </mat-header-cell>
+    <mat-header-cell i18n *matHeaderCellDef> Critique </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.critique}} </mat-cell>
   </ng-container>
 
@@ -12,18 +12,18 @@
   </ng-container>
 
   <ng-container matColumnDef="nom">
-    <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+    <mat-header-cell i18n *matHeaderCellDef> Nom </mat-header-cell>
     <mat-cell *matCellDef="let element">
       <span *ngIf="!element.anonyme; else anonymeBlock">{{ element.nom }}</span>
-      <ng-template #anonymeBlock> Anonyme </ng-template>
+      <ng-template i18n #anonymeBlock> Anonyme </ng-template>
     </mat-cell>
   </ng-container>
   
   <ng-container matColumnDef="prenom">
-    <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
+    <mat-header-cell i18n *matHeaderCellDef> Prénom </mat-header-cell>
     <mat-cell *matCellDef="let element">
       <span *ngIf="!element.anonyme; else anonymePrenomBlock">{{ element.prenom }}</span>
-      <ng-template #anonymePrenomBlock> Anonyme </ng-template>
+      <ng-template i18n #anonymePrenomBlock> Anonyme </ng-template>
     </mat-cell>
   </ng-container>
   

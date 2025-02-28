@@ -1,9 +1,9 @@
 <div class="critique-container">
   <form class="form-critique" *ngIf="authService.isLoggedIn" [formGroup]="critiqueForm" (ngSubmit)="onSubmit()">
-    <h3>Ajouter une critique</h3>
+    <h3 i18n>Ajouter une critique</h3>
     
     <mat-form-field class="full-width">
-      <mat-label>Critique</mat-label>
+      <mat-label i18n>Critique</mat-label>
       <textarea formControlName="critique" matInput required></textarea>
     </mat-form-field>
     
@@ -12,17 +12,17 @@
       <input matInput type="number" min="0" max="20" formControlName="note" required>
     </mat-form-field>
     
-    <mat-slide-toggle class="toggle" formControlName="anonyme">Critique anonyme</mat-slide-toggle>
+    <mat-slide-toggle i18n class="toggle" formControlName="anonyme">Critique anonyme</mat-slide-toggle>
     
       <mat-form-field class="full-width">
-        <mat-label>Nom</mat-label>
+        <mat-label i18n>Nom</mat-label>
         <input matInput formControlName="nom" [attr.disabled]="critiqueForm.get('anonyme')?.value ? '' : null">
       </mat-form-field>
       
       <mat-form-field class="full-width">
-        <mat-label>Prénom</mat-label>
+        <mat-label i18n>Prénom</mat-label>
         <input matInput formControlName="prenom" [attr.disabled]="critiqueForm.get('anonyme')?.value ? '' : null">
       </mat-form-field>
-      <button class="btn-critique full-width" mat-button type="submit" [disabled]="critiqueForm.invalid">Enregistrer</button>
+      <button i18b class="btn-critique full-width" mat-button type="submit" [disabled]="critiqueForm.invalid">Enregistrer</button>
   </form>
 </div>

@@ -4,10 +4,19 @@
   "newProjectRoot": "projects",
   "projects": {
     "parc": {
+      "i18n": {
+        "sourceLocale": "fr",
+        "locales": {
+          "en": "src/locale/messages.en.xlf"
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
@@ -17,11 +26,16 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": [
+              "en",
+              "fr"
+            ],
             "outputPath": "dist/parc",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "src/polyfills.ts"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -36,6 +50,12 @@
             "scripts": []
           },
           "configurations": {
+            "en": {
+              "localize": ["en"]
+            },
+            "fr": {
+              "localize": ["fr"]
+            },
             "production": {
               "budgets": [
                 {
@@ -67,6 +87,12 @@
             },
             "development": {
               "buildTarget": "parc:build:development"
+            },
+            "fr":{
+              "buildTarget": "parc:build:fr"
+            },
+            "en":{
+              "buildTarget": "parc:build:en"
             }
           },
           "defaultConfiguration": "development"
